@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification Button</title>
+</head>
+<body>
+  <!-- Create the button element -->
+  <button id="notifications">Enable Notifications</button>
+
+  <script>
+    // Function to show a random notification (you can customize this)
+    function randomNotification() {
+      const options = {
+        body: "Here is a random notification!",
+        icon: "icon.png" // You can add an icon if you want
+      };
+      new Notification("Random Notification", options);
+    }
+
+    // Add event listener to the button
+    const button = document.getElementById("notifications");
+    button.addEventListener("click", () => {
+      Notification.requestPermission().then((result) => {
+        if (result === "granted") {
+          randomNotification();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
